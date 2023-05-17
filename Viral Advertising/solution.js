@@ -6,9 +6,13 @@
  */
 
 function viralAdvertising(n) {
-    let t = 2, c = t
-    while (--n)
-        // c += t = (t * 3 / 2)|0 // <--- alternative floor method
-        c += t += t >> 1         // <--- faster floor method
-    return c
+    let peopleShared = 5;
+    let peopleLiked = Math.floor(peopleShared / 2);
+    let accumulatedLiked = peopleLiked;
+    while (--n) {
+        peopleShared = peopleLiked * 3;
+        peopleLiked = Math.floor(peopleShared / 2)
+        accumulatedLiked = accumulatedLiked + peopleLiked;
+    }
+    return accumulatedLiked;
 }
